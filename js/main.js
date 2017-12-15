@@ -1,7 +1,7 @@
 
 (function($) {
 
-    var DEBUG = true, // save last parsed text in cookies and log the response
+    var DEBUG = false, // save last parsed text in cookies and log the response
         KEYPRESS_MIN_INTERVAL = 300, // in milliseconds
         isLoading = false,
         keypressTimeout = null,
