@@ -169,7 +169,7 @@
         } else {
 
             $.ajax({
-                "url": "http://localhost:30000/parse",
+                "url": "http://dependencyparsing.com:30000/parse",
                 "method": "POST",
                 "data": {
                     "text": text
