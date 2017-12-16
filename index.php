@@ -1,3 +1,7 @@
+<?php
+    $xml_config = simplexml_load_file("config.xml") or die("Error: Cannot read XML config file");
+    $GA_TRACKING_ID=$xml_config->GA_TRACKING_ID;
+?>
 <!doctype html>
 <html>
     <head>
@@ -10,6 +14,15 @@
         <link rel="stylesheet" type="text/css" href="css/checkbox.min.css">
         <link rel="stylesheet" type="text/css" href="css/font.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<?= $GA_TRACKING_ID ?>"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '<?= $GA_TRACKING_ID ?>');
+        </script>
     </head>
     <body>
 
