@@ -19,6 +19,20 @@ PHP XML
 sudo apt-get install php-xml
 ```
 
+
+## Configuration
+
+Create your own configuration file:
+```bash
+cp config.xml.example config.xml
+```
+
+And edit it properly:
+```bash
+nano config.xml
+```
+
+
 ## License
 
 This software is released under the terms of the 
