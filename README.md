@@ -11,6 +11,14 @@ Morpho-syntactic information are obtained calling the
 they are represented drawing dependency trees using the 
 [DependencyTreeJS](https://github.com/KotlinNLP/DependencyTreeJS "DependencyTreeJS on GitHub") library.
 
+
+## Requirements
+
+PHP XML
+```bash
+sudo apt-get install php-xml
+```
+
 ## License
 
 This software is released under the terms of the 
