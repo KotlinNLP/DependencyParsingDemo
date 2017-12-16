@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 <?php
     $xml_config = simplexml_load_file("config.xml") or die("Error: Cannot read XML config file");
-    $GA_TRACKING_ID=$xml_config->GA_TRACKING_ID;
+    $GA_TRACKING_ID = $xml_config->GA_TRACKING_ID;
 ?>
-<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
