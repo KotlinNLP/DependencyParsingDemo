@@ -1,6 +1,6 @@
 * {
     outline: 0;
-    font-family: proxima-nova;
+    font-family: proxima-nova, sans-serif;
 }
 a {
     text-decoration: none;
@@ -29,6 +29,7 @@ html, body {
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
 #header-section {
+    position: relative;
     width: 100%;
     background-color: #FFF;
 }
@@ -88,10 +89,10 @@ html, body {
     -moz-border-radius: 0.8em;
     border-radius: 0.8em;
     /* Box shadow */
-    -webkit-box-shadow: 0px 0.8em 3em -0.5em rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0.8em 3em -0.5em rgba(0,0,0,0.75);
-    box-shadow: 0px 0.8em 3em -0.5em rgba(0,0,0,0.75);
-    -o-box-shadow: 0px 0.8em 3em -0.5em rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 0.8em 3em -0.5em rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0.8em 3em -0.5em rgba(0,0,0,0.75);
+    box-shadow: 0 0.8em 3em -0.5em rgba(0,0,0,0.75);
+    -o-box-shadow: 0 0.8em 3em -0.5em rgba(0,0,0,0.75);
 }
 #chk-realtime-container {
     position: absolute;
@@ -168,4 +169,16 @@ html, body {
 #dependency-tree {
     width: 100%;
     padding-top: 1.5em;
+}
+/* Body scroll on low resolution */
+@media screen and (max-width: 1200px) {
+    body {
+        overflow: auto;
+        height: inherit;
+        min-height: 100%;
+    }
+    #results {
+        height: auto;
+        overflow: inherit;
+    }
 }
