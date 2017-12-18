@@ -39,12 +39,11 @@
                     </a>
                 </div>
 
-                <div id="page-title">
-                    <h1>Dependency Parsing Demo</h1>
-                </div>
+                <div id="header-body">
+                    
+                    <h1 id="page-title">Dependency Parsing Demo</h1>
 
-                <div id="description">
-                    <p>
+                    <p id="description">
                         A demo that shows the results of 
                         <a href="https://github.com/KotlinNLP" target="_blank" title="KotlinNLP on GitHub">
                             <img src="img/logo.png">
