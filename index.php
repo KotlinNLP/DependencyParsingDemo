@@ -62,6 +62,7 @@
 
             <!-- INPUT -->
             <div id="input-section">
+                <div class="background-light"></div>
 
                 <textarea id="text-input" class="border-box" placeholder="Insert here the text to parse."></textarea>
 

@@ -12,10 +12,10 @@ a:hover {
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
     margin: 0;
     padding: 0;
     border: none;
+    background-color: #494D5A;
 }
 #main-container {
     display: flex;
@@ -32,6 +32,7 @@ html, body {
     position: relative;
     width: 100%;
     background-color: #FFF;
+    padding-bottom: 2em;
 }
 #page-title {
     width: 100%;
@@ -51,7 +52,7 @@ html, body {
     color: inherit !important;
 }
 #main-logo img {
-    height: 2em;
+    height: 1.7em;
 }
 #description {
     padding: 0 0.5em;
@@ -70,8 +71,14 @@ html, body {
     position: relative;
     z-index: 2;
     width: 100%;
-    height: 12em;
-    margin-top: 2em;
+    height: 10em;
+}
+.background-light {
+    width: 100%;
+    height: 50%;
+    background-color: #FFF;
+    position: absolute;
+    z-index: -1;
 }
 #text-input {
     resize: none;
@@ -138,12 +145,10 @@ html, body {
     vertical-align: middle;
 }
 #results {
-    overflow: auto;
     width: 100%;
-    height: 100%;
+    height: inherit;
     padding: 0 1.5em;
-    background-color: #494D5A;
-    margin-top: -6em;
+    margin-top: -5em;
 }
 #before-tree {
     width: 100%;
@@ -171,14 +176,11 @@ html, body {
     padding-top: 1.5em;
 }
 /* Body scroll on low resolution */
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 1200px) {
     body {
-        overflow: auto;
-        height: inherit;
-        min-height: 100%;
+        overflow: hidden;
     }
     #results {
-        height: auto;
-        overflow: inherit;
+        overflow: auto;
     }
 }
