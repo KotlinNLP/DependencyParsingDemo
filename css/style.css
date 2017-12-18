@@ -33,15 +33,8 @@ body {
 }
 #header-section {
     position: relative;
-    width: 100%;
     background-color: #FFF;
-    padding-bottom: 2em;
-}
-#page-title {
-    width: 100%;
-    height: 3em;
-    margin-top: 2em;
-    text-align: center;
+    padding: 1.5em;
 }
 #main-logo:hover {
     opacity: 0.7;
@@ -57,8 +50,15 @@ body {
 #main-logo img {
     height: 1.7em;
 }
+#header-body {
+    width: 100%;
+}
+#page-title {
+    margin: 0.5em 0;
+    text-align: center;
+}
 #description {
-    padding: 0 0.5em;
+    margin: 1.5em 0;
     text-align: center;
 }
 #description img {
@@ -190,6 +190,6 @@ body {
 }
 @media screen and (max-width: 50em) {
     #header-section {
-        padding-top: 3em;
+        padding-top: 4em;
     }
 }
