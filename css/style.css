@@ -179,7 +179,7 @@ body {
     width: 100%;
     padding-top: 1.5em;
 }
-/* Body scroll on low resolution */
+/* Style on low resolutions */
 @media screen and (max-width: 75em) {
     body, #results {
         overflow: inherit;
