@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <config>
-    <GA_TRACKING_ID>GA_TRACKING_ID</GA_TRACKING_ID> // Google Analytics Tracking ID
+
+    <!-- Google Analytics Tracking ID -->
+    <ga_tracking_id>GA_TRACKING_ID</ga_tracking_id>
+
+    <!-- Backend -->
+    <backend>
+        <protocol>http</protocol>
+        <host>localhost</host>
+        <port>30000</port>
+        <path>/parse</path>
+    </backend>
+
 </config>
