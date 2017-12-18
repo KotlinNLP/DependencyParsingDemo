@@ -207,7 +207,7 @@
         }
     }
 
-    function onError(jqXHR, textStatus, errorThrown) {
+    function onError(jqXHR) {
         
         console.error("NLP Server error: [" + jqXHR.status + "] " + jqXHR.statusText);
 
@@ -218,7 +218,7 @@
 
         $("#language-not-supported").show();
 
-        setLanguage(isoCode, supported=false);
+        setLanguage(isoCode, false);
     }
 
     function clearResults() {
@@ -248,15 +248,19 @@
         $("#parse-btn-label").show();
     }
 
-    function setLanguage(isoCode, supported=true) {
+    function setLanguage(isoCode, supported) {
+
+        supported = typeof supported !== 'undefined' ? supported : true; // default = true
+
+        var languageDiv = $("#language");
 
         if (supported) {
-            $("#language").removeClass("not-supported");
+            languageDiv.removeClass("not-supported");
         } else {
-            $("#language").addClass("not-supported");
+            languageDiv.addClass("not-supported");
         }
         
-        $("#language").show();
+        languageDiv.show();
         $("#lang-code").text(isoCode.toUpperCase());
     }
 
@@ -273,7 +277,9 @@
         }
     }
 
-    function setCookie(cname, cvalue, exdays=1) {
+    function setCookie(cname, cvalue, exdays) {
+
+        exdays = typeof exdays !== 'undefined' ? exdays : 1; // default = 1
 
         var d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
