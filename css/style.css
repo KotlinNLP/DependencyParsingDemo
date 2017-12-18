@@ -180,11 +180,16 @@ body {
     padding-top: 1.5em;
 }
 /* Body scroll on low resolution */
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 75em) {
     body, #results {
         overflow: inherit;
     }
     #before-tree {
         padding-top: 8.5em;
+    }
+}
+@media screen and (max-width: 50em) {
+    #header-section {
+        padding-top: 3em;
     }
 }
