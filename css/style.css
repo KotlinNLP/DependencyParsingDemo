@@ -17,6 +17,9 @@ html, body {
     border: none;
     background-color: #494D5A;
 }
+body {
+    overflow: hidden;
+}
 #main-container {
     display: flex;
     flex-direction: column;
@@ -145,6 +148,7 @@ html, body {
     vertical-align: middle;
 }
 #results {
+    overflow: auto;
     width: 100%;
     height: inherit;
     padding: 0 1.5em;
@@ -176,11 +180,11 @@ html, body {
     padding-top: 1.5em;
 }
 /* Body scroll on low resolution */
-@media screen and (min-width: 1200px) {
-    body {
-        overflow: hidden;
+@media screen and (max-width: 1200px) {
+    body, #results {
+        overflow: inherit;
     }
-    #results {
-        overflow: auto;
+    #before-tree {
+        padding-top: 8.5em;
     }
 }
