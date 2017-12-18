@@ -23,7 +23,6 @@ body {
 #main-container {
     display: flex;
     flex-direction: column;
-    width: 100%;
     height: 100%;
 }
 #main-container .border-box {
@@ -73,15 +72,27 @@ body {
 #input-section {
     position: relative;
     z-index: 2;
-    width: 100%;
     height: 10em;
 }
-.background-light {
+#half-input-section {
     width: 100%;
     height: 50%;
     background-color: #FFF;
     position: absolute;
     z-index: -1;
+}
+#chk-realtime-container {
+    position: absolute;
+    padding: 0.8em;
+}
+#chk-realtime-title {
+    color: #494D5A;
+}
+#chk-realtime-label {
+    margin-top: 0.5em;
+}
+#chk-realtime:checked~#chk-realtime-label:before {
+    background-color: #4CAF39 !important;
 }
 #text-input {
     resize: none;
@@ -103,19 +114,6 @@ body {
     -moz-box-shadow: 0 0.8em 3em -0.5em rgba(0,0,0,0.75);
     box-shadow: 0 0.8em 3em -0.5em rgba(0,0,0,0.75);
     -o-box-shadow: 0 0.8em 3em -0.5em rgba(0,0,0,0.75);
-}
-#chk-realtime-container {
-    position: absolute;
-    padding: 0.8em;
-}
-#chk-realtime-title {
-    color: #494D5A;
-}
-#chk-realtime-label {
-    margin-top: 0.5em;
-}
-#chk-realtime:checked~#chk-realtime-label:before {
-    background-color: #4CAF39 !important;
 }
 #parse-btn {
     position: absolute;
@@ -149,13 +147,10 @@ body {
 }
 #results {
     overflow: auto;
-    width: 100%;
-    height: inherit;
     padding: 0 1.5em;
     margin-top: -5em;
 }
 #before-tree {
-    width: 100%;
     height: 5em;
     padding-top: 1.5em;
 }
@@ -176,20 +171,31 @@ body {
     color: #EC5C5C;
 }
 #dependency-tree {
-    width: 100%;
     padding-top: 1.5em;
 }
-/* Style on low resolutions */
+/* Style on mid-low resolution */
 @media screen and (max-width: 75em) {
     body, #results {
         overflow: inherit;
+    }
+    #main-container {
+        min-width: 100%;
+        display: inline-block;
     }
     #before-tree {
         padding-top: 8.5em;
     }
 }
+/* Style on low resolution */
 @media screen and (max-width: 50em) {
     #header-section {
         padding-top: 4em;
+    }
+    #header-section {
+        padding-bottom: 5em;
+    }
+    #chk-realtime-container {
+        left: 20%;
+        top: -5em;
     }
 }

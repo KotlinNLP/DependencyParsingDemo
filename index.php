@@ -75,7 +75,8 @@
 
             <!-- INPUT -->
             <div id="input-section">
-                <div class="background-light"></div>
+
+                <div id="half-input-section"></div>
 
                 <textarea id="text-input" class="border-box" placeholder="Insert here the text to parse."></textarea>
 
@@ -93,14 +94,14 @@
             </div>
 
             <!-- RESULTS -->
-            <div id="results" class="border-box">
+            <div id="results">
                 
                 <div id="before-tree">
                     <div id="language">Detected language: <span id="lang-code"></span></div>
                     <div id="language-not-supported">Not supported</div>
                 </div>
 
-                <div id="dependency-tree" class="border-box"></div>
+                <div id="dependency-tree"></div>
             </div>
 
         </div>
