@@ -10,9 +10,6 @@
             BACKEND_CONFIG['path'],
         isLoading = false,
         keypressTimeout = null,
-        normalColor = "#A3ADC7",
-        hoverColor = "#FF9C2F",
-        clickColor = "#5496DC",
         DT = null;
     
     $("#text-input").on("input paste", startTimeout);
@@ -26,8 +23,7 @@
     function onReady() {
 
         initDT();
-
-        $("#text-input").focus();
+        inputFocus();
 
         if (DEBUG) {
             restoreText();
@@ -36,95 +32,11 @@
     }
 
     function initDT() {
+        DT = $("#dependency-tree").dependencyTree(DT_OPTIONS);
+    }
 
-        var options = {
-                "styles": {
-                    "atom": {
-                        "rect": {
-                            "normal": {
-                                "stroke": normalColor
-                            },
-                            "hover": {
-                                "stroke": hoverColor,
-                                "stroke-width": 2,
-                                "fill": ""
-                            },
-                            "click": {
-                                "stroke": clickColor,
-                                "stroke-width": 2,
-                                "fill": ""
-                            }
-                        },
-                        "form": {
-                            "normal": {
-                                "fill": "#EAEAEA",
-                                "font": "1em proxima-nova"
-                            },
-                            "hover": {
-                                "fill": "#EAEAEA",
-                                "font": "1em proxima-nova"
-                            },
-                            "click": {
-                                "fill": "#EAEAEA",
-                                "font": "1em proxima-nova"
-                            }
-                        },
-                        "pos": {
-                            "spacing": 5,
-                            "normal": {
-                                "fill": "#A09DE9",
-                                "font-weight": "bold",
-                                "font": "0.9em proxima-nova"
-                            },
-                            "hover": {
-                                "fill": hoverColor,
-                                "font-weight": "bold",
-                                "font": "0.9em proxima-nova"
-                            },
-                            "click": {
-                                "fill": clickColor,
-                                "font-weight": "bold",
-                                "font": "0.9em proxima-nova"
-                            }
-                        }
-                    },
-                    "deprel": {
-                        "normal": {
-                            "fill": normalColor,
-                            "font": "1em proxima-nova",
-                            "font-weight": "bold"
-                        },
-                        "hover": {
-                            "fill": hoverColor,
-                            "font": "1em proxima-nova",
-                            "font-weight": "bold"
-                        },
-                        "click": {
-                            "fill": clickColor,
-                            "font": "1em proxima-nova",
-                            "font-weight": "bold"
-                        },
-                        "path": {
-                            "spacing": 14,
-                            "normal": {
-                                "stroke": normalColor
-                            },
-                            "hover": {
-                                "stroke": hoverColor
-                            },
-                            "click": {
-                                "stroke": clickColor
-                            }
-                        },
-                        "padding": {
-                          "horizontal": 15
-                        },
-                        "spacing": 5
-                    }
-                }
-            };
-    
-        DT = $("#dependency-tree").dependencyTree(options);
+    function inputFocus() {
+        $("#text-input").focus();
     }
 
     function startTimeout() {
@@ -166,13 +78,10 @@
         }
     	
         if ($.trim(text) === "") {
-
             clearResults();
-
             endLoading();
 
         } else {
-
             $.ajax({
                 "url": BACKEND_URL,
                 "method": "POST",

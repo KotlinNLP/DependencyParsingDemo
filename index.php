@@ -109,6 +109,7 @@
         <script src="js/raphael.min.js"></script>
         <script src="js/checkbox.min.js"></script>
         <script src="js/dependency-tree.min.js"></script>
+        <script src="js/dt-options.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
