@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <?php
     $xml_config = simplexml_load_file("config.xml") or die("Error: Cannot read XML config file");
-    $GA_TRACKING_ID = $xml_config->GA_TRACKING_ID;
+    $GA_TRACKING_ID = $xml_config->ga_tracking_id;
+    $BACKEND_PROTOCOL = $xml_config->backend->protocol;
+    $BACKEND_HOST = $xml_config->backend->host;
+    $BACKEND_PORT = $xml_config->backend->port;
+    $BACKEND_PATH = $xml_config->backend->path;
 ?>
 <html>
     <head>
@@ -22,6 +26,16 @@
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '<?= $GA_TRACKING_ID ?>');
+        </script>
+
+        <!-- Global vars -->
+        <script>
+            window.BACKEND_CONFIG = {
+              "protocol": "<?= $BACKEND_PROTOCOL ?>",
+              "host": "<?= $BACKEND_HOST ?>",
+              "port": "<?= $BACKEND_PORT ?>",
+              "path": "<?= $BACKEND_PATH ?>"
+            };
         </script>
     </head>
     <body>

@@ -3,6 +3,11 @@
 
     var DEBUG = false, // save last parsed text in cookies and log the response
         KEYPRESS_MIN_INTERVAL = 300, // in milliseconds
+        BACKEND_URL =
+            BACKEND_CONFIG['protocol'] + "://" +
+            BACKEND_CONFIG['host'] + ":" +
+            BACKEND_CONFIG['port'] +
+            BACKEND_CONFIG['path'],
         isLoading = false,
         keypressTimeout = null,
         normalColor = "#A3ADC7",
@@ -169,7 +174,7 @@
         } else {
 
             $.ajax({
-                "url": "http://dependencyparsing.com:30000/parse",
+                "url": BACKEND_URL,
                 "method": "POST",
                 "data": {
                     "text": text
