@@ -1,7 +1,7 @@
 
 (function($) {
 
-    var DEBUG = false, // save last parsed text in cookies and log the response
+    var DEBUG = false, // save last analyzed text in cookies and log the response
         KEYPRESS_MIN_INTERVAL = 300, // in milliseconds
         BACKEND_URL =
             BACKEND_CONFIG['protocol'] + "://" +
@@ -14,7 +14,7 @@
     
     $("#text-input").on("input paste", startTimeout);
     $("#chk-realtime").change(disableTimeout);
-    $("#parse-btn").click(onParseButtonClick);
+    $("#analyze-btn").click(onAnalyzeButtonClick);
 
     $(document).ready(onReady);
 
@@ -27,7 +27,7 @@
 
         if (DEBUG) {
             restoreText();
-            parseText();
+            analyzeText();
         }
     }
 
@@ -46,17 +46,17 @@
             disableTimeout();
 
             if (!isLoading) {
-                keypressTimeout = setTimeout(parseText, KEYPRESS_MIN_INTERVAL)
+                keypressTimeout = setTimeout(analyzeText, KEYPRESS_MIN_INTERVAL)
             }
         }
     }
 
-    function onParseButtonClick() {
+    function onAnalyzeButtonClick() {
 
         disableTimeout();
 
         if (!isLoading) {
-            parseText();
+            analyzeText();
         }
     }
 
@@ -67,7 +67,7 @@
         }        
     }
 
-    function parseText() {
+    function analyzeText() {
 
         startLoading();
 
@@ -147,8 +147,8 @@
 
         isLoading = true;
 
-        $("#parse-btn").attr("disabled", "disabled");
-        $("#parse-btn-label").hide();
+        $("#analyze-btn").attr("disabled", "disabled");
+        $("#analyze-btn-label").hide();
         $("#language-not-supported").hide();
         $("#loading-img").show();
     }
@@ -157,9 +157,9 @@
 
         isLoading = false;
 
-        $("#parse-btn").removeAttr("disabled");
+        $("#analyze-btn").removeAttr("disabled");
         $("#loading-img").hide();
-        $("#parse-btn-label").show();
+        $("#analyze-btn-label").show();
     }
 
     function setLanguage(isoCode, supported) {

@@ -78,7 +78,7 @@
 
                 <div id="half-input-section"></div>
 
-                <textarea id="text-input" class="border-box" placeholder="Insert here the text to parse."></textarea>
+                <textarea id="text-input" class="border-box" placeholder="Insert here the text to analyze."></textarea>
 
                 <div id="chk-realtime-container" class="ui toggle checkbox">
                     <span id="chk-realtime-title">Realtime</span>
@@ -86,8 +86,8 @@
                     <label id="chk-realtime-label" for="chk-realtime"></label>
                 </div>
 
-                <button id="parse-btn">
-                    <span id="parse-btn-label">Parse</span>
+                <button id="analyze-btn">
+                    <span id="analyze-btn-label">Analyze</span>
 				    <img id="loading-img" src="img/loading.gif">
                 </button>
                 
