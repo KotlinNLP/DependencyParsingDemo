@@ -140,8 +140,8 @@
         return {
             "id": atom['syn']['id'],
             "head": atom['syn']['head'],
-            "form": atom['surface']['form'],
-            "pos": atom['morpho'][0][0]['pos'],
+            "form": atom['surface']['form'] || "Ø",
+            "pos": atom['syn']['edges'][0]['pos'],
             "deprel": atom['syn']['edges'][0]['deprel'] + (atom['sem'].length > 0 ? "-" + "/".join(atom['sem']) : ""),
             "sem": atom['sem'].length > 0 ? atom['sem'] : null,
             "corefs": atom['corefs'].length > 0 ? atom['corefs'].map(convertNLSCoref) : null
