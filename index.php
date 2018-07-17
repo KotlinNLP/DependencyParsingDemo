@@ -6,6 +6,10 @@
     $BACKEND_HOST = $xml_config->backend->host;
     $BACKEND_PORT = $xml_config->backend->port;
     $BACKEND_PATH = $xml_config->backend->path;
+    $NLS_BACKEND_PROTOCOL = $xml_config->nls_backend->protocol;
+    $NLS_BACKEND_HOST = $xml_config->nls_backend->host;
+    $NLS_BACKEND_PORT = $xml_config->nls_backend->port;
+    $NLS_BACKEND_PATH = $xml_config->nls_backend->path;
 ?>
 <html>
     <head>
@@ -35,6 +39,12 @@
               "host": "<?= $BACKEND_HOST ?>",
               "port": "<?= $BACKEND_PORT ?>",
               "path": "<?= $BACKEND_PATH ?>"
+            };
+            window.NLS_BACKEND_CONFIG = {
+              "protocol": "<?= $NLS_BACKEND_PROTOCOL ?>",
+              "host": "<?= $NLS_BACKEND_HOST ?>",
+              "port": "<?= $NLS_BACKEND_PORT ?>",
+              "path": "<?= $NLS_BACKEND_PATH ?>"
             };
         </script>
     </head>

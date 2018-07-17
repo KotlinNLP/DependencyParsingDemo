@@ -12,4 +12,12 @@
         <path>/parse</path>
     </backend>
 
+    <!-- NLS Backend -->
+    <nls_backend>
+        <protocol>http</protocol>
+        <host>136.243.148.213</host>
+        <port>3100</port>
+        <path>/parse</path>
+    </nls_backend>
+
 </config>
