@@ -8,6 +8,11 @@
             BACKEND_CONFIG['host'] + ":" +
             BACKEND_CONFIG['port'] +
             BACKEND_CONFIG['path'],
+        NLS_BACKEND_URL =
+            NLS_BACKEND_CONFIG['protocol'] + "://" +
+            NLS_BACKEND_CONFIG['host'] + ":" +
+            NLS_BACKEND_CONFIG['port'] +
+            NLS_BACKEND_CONFIG['path'],
         isLoading = false,
         keypressTimeout = null,
         DT = null;
@@ -96,17 +101,71 @@
         }
     }
 
+    function analyzeTextWithNLS() {
+
+        $.ajax({
+            "url": NLS_BACKEND_URL,
+            "method": "POST",
+            "data": JSON.stringify({
+                "text": $("#text-input").val()
+            }),
+            "contentType": "text/plain",
+            "dataType": "json",
+            "success": onSuccessNLS,
+            "error": onError,
+            "complete": endLoading
+        });
+    }
+
+    function onSuccessNLS(data) {
+
+        var converted_data = {
+            "lang": data['languages'][0]['iso_a2'],
+            "sentences": data['parsed_sentences'].map(convertNLSSentence)
+        };
+
+        onSuccess(converted_data);
+    }
+
+    function convertNLSSentence(sentence, sentenceID) {
+
+        return {
+            "id": sentenceID,
+            "atoms": sentence['atoms'].map(convertNLSAtom)
+        }
+    }
+
+    function convertNLSAtom(atom) {
+
+        return {
+            "id": atom['syn']['id'],
+            "head": atom['syn']['head'],
+            "form": atom['surface']['form'],
+            "pos": atom['morpho'][0][0]['pos'],
+            "deprel": atom['syn']['edges'][0]['deprel'] + (atom['sem'].length > 0 ? "-" + "/".join(atom['sem']) : ""),
+            "sem": atom['sem'].length > 0 ? atom['sem'] : null,
+            "corefs": atom['corefs'].length > 0 ? atom['corefs'].map(convertNLSCoref) : null
+        }
+    }
+
+    function convertNLSCoref(coref) {
+
+        return {
+            "atomId": coref['id'],
+            "sentenceId": coref['sent_index']
+        }
+    }
+
     function onSuccess(data) {
 
         if ("error" in data) {
-                
-            clearResults();
 
             if (data.error.type == "NOT_SUPPORTED_LANGUAGE") {
-                
-                notSupportedLanguage(data.error.data.lang);
+
+                analyzeTextWithNLS();
 
             } else {
+                clearResults();
                 console.error("NLP Server error: " + data.error.type);
             }
             
@@ -126,13 +185,6 @@
         console.error("NLP Server error: [" + jqXHR.status + "] " + jqXHR.statusText);
 
         clearResults();
-    }
-
-    function notSupportedLanguage(isoCode) {
-
-        $("#language-not-supported").show();
-
-        setLanguage(isoCode, false);
     }
 
     function clearResults() {
