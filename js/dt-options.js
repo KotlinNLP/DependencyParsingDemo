@@ -22,6 +22,11 @@
                         "stroke": LINE_CLICK_COLOR,
                         "stroke-width": 2,
                         "fill": ""
+                    },
+                    "underline": {
+                        "stroke": "#DDDDDD",
+                        "stroke-width": 2,
+                        "fill": ""
                     }
                 },
                 "form": {
@@ -89,6 +94,28 @@
                   "horizontal": 15
                 },
                 "spacing": 5
+            },
+            "underline": {
+                "label": {
+                    "normal": {
+                        "fill": "#A09DE9",
+                        "font-weight": "bold",
+                        "font": "0.6em proxima-nova"
+                    },
+                    "hover": {
+                        "fill": "#DDDDDD",
+                        "font-weight": "bold",
+                        "font": "0.6em proxima-nova"
+                    }
+                },
+                "path": {
+                    "normal": {
+                        "stroke": LINE_NORMAL_COLOR
+                    },
+                    "hover": {
+                        "stroke": "#DDDDDD"
+                    }
+                }
             }
         }
     };
