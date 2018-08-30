@@ -128,10 +128,14 @@
     }
 
     function convertNLSSentence(sentence, sentenceID) {
+        var entities = convertNLSUnderline(sentence['atoms'], 'entities'),
+            datetimes = convertNLSUnderline(sentence['atoms'], 'datetime');
 
         return {
             "id": sentenceID,
-            "atoms": sentence['atoms'].map(convertNLSAtom)
+            "atoms": sentence['atoms'].map(convertNLSAtom),
+            "entities": getFilteredEntities(entities, datetimes),
+            "datetimes": datetimes
         }
     }
 
@@ -146,6 +150,43 @@
             "sem": atom['sem'].length > 0 ? atom['sem'] : null,
             "corefs": atom['corefs'].length > 0 ? atom['corefs'].map(convertNLSCoref) : null
         }
+    }
+
+    function convertNLSUnderline(atoms, type) {
+        var underlines = [],
+            start = null;
+
+        for(var i = 0; i < atoms.length; i++) {
+            var underline = type === 'datetime' ? atoms[i][type] : atoms[i][type][0];
+
+            if (underline['iob'] === 'B' || (start === null && underline['iob'] === 'I')) {
+                start = i;
+            }
+
+            if (start !== null && (i + 1 === atoms.length || underline['iob'] === 'O')) {
+                var end = underline['iob'] === 'O' ? i - 1 : i,
+                    label = type === 'datetime' ? 'DATE' : atoms[end][type][0]['type'];
+
+                underlines.push({ start_atom: start, end_atom: end, label: label });
+                start = null;
+            }
+        }
+
+        return underlines;
+    }
+
+    function getFilteredEntities(entities, datetimes) {
+        return entities.filter((entity) => {
+            var response = true;
+            for(var i = 0; i < datetimes.length; i++) {
+              if (entity.start_atom >= datetimes[i].start_atom && entity.start_atom <= datetimes[i].end_atom) {
+                  response = false;
+                  break;
+              }
+            }
+
+            return response;
+        });
     }
 
     function convertNLSCoref(coref) {
@@ -261,7 +302,7 @@
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
 
-        for(var i = 0; i <ca.length; i++) {
+        for(var i = 0; i < ca.length; i++) {
             var c = ca[i];
 
             while (c.charAt(0) == ' ') {
